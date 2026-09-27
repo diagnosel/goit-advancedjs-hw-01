@@ -2,11 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 async function loadModule(relativePath) {
-  try {
-    return await import(new URL(relativePath, import.meta.url));
-  } catch {
-    return {};
-  }
+  return import(new URL(relativePath, import.meta.url));
 }
 
 test('gallery markup links previews to original images and keeps descriptions', async () => {
