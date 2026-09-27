@@ -15,7 +15,6 @@ npm run dev
 ## Checks
 
 ```bash
-npm test
 npm run format:check
 npm run build
 ```

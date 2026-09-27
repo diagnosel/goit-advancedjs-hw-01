@@ -1,15 +1,10 @@
-import {
-  isFormDataComplete,
-  parseStoredFormData,
-  updateFormData,
-} from './form-state.js';
-
 const STORAGE_KEY = 'feedback-form-state';
 const form = document.querySelector('.feedback-form');
 const formData = { email: '', message: '' };
-const storedFormData = parseStoredFormData(localStorage.getItem(STORAGE_KEY));
+const storedFormData = JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? {};
 
-Object.assign(formData, storedFormData);
+formData.email = storedFormData.email ?? '';
+formData.message = storedFormData.message ?? '';
 form.elements.email.value = formData.email;
 form.elements.message.value = formData.message;
 
@@ -17,14 +12,14 @@ form.addEventListener('input', handleFormInput);
 form.addEventListener('submit', handleFormSubmit);
 
 function handleFormInput(event) {
-  updateFormData(formData, event.target);
+  formData[event.target.name] = event.target.value.trim();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
 function handleFormSubmit(event) {
   event.preventDefault();
 
-  if (!isFormDataComplete(formData)) {
+  if (!formData.email || !formData.message) {
     alert('Fill please all fields');
     return;
   }

@@ -4,9 +4,9 @@ import { defineConfig } from 'vite';
 import FullReload from 'vite-plugin-full-reload';
 import injectHTML from 'vite-plugin-html-inject';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig({
   define: {
-    [command === 'serve' ? 'global' : '_global']: {},
+    global: {},
   },
   root: 'src',
   build: {
@@ -31,4 +31,4 @@ export default defineConfig(({ command }) => ({
     FullReload(['./src/**/*.html']),
     SortCss({ sort: 'mobile-first' }),
   ],
-}));
+});

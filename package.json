@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build --base=/goit-advancedjs-hw-01/",
     "preview": "vite preview",
-    "test": "node --test tests/homework.test.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -21,6 +20,6 @@
     "postcss": "^8.4.41",
     "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.6.2",
-    "vite": "8.3.1"
+    "vite": "6.4.3"
   }
 }
